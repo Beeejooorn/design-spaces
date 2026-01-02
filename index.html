@@ -16,12 +16,12 @@
             <span></span>
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="properties.html">Properties</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="properties.html">Properties</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><button class="btn-primary">Get Started</button></li>
+            <li><a href="contact.html"><button class="btn-primary">Get Started</button></a></li>
         </ul>
     </nav>
 
@@ -32,24 +32,18 @@
                 <p class="hero-label">Welcome to Design Spaces</p>
                 <h1>Find Your Dream<br>Home Today</h1>
             </div>
-            <p class=" hero-par slide-up delay-2">Discover exceptional properties tailored to your lifestyle and investment goals</p>
+            <p class=" hero-par slide-up delay-2">Discover exceptional properties tailored to your lifestyle and investment goals.</p>
             
             <div class="search-container scale-in delay-3">
-                <input type="text" class="search-input" placeholder="Location">
-                <select class="search-input">
-                    <option>Property Type</option>
-                    <option>House</option>
-                    <option>Apartment</option>
-                    <option>Villa</option>
-                </select>
-                <select class="search-input">
-                    <option>Price Range</option>
-                    <option>$0 - $500k</option>
-                    <option>$500k - $1M</option>
-                    <option>$1M+</option>
-                </select>
-                <button class="search-button">Search Properties</button>
-            </div>
+    <div class="search-input-wrapper">
+        <span class="search-icon">📍</span>
+        <input type="text" class="search-input-modern" placeholder="Enter location, city, or ZIP code">
+    </div>
+    <button class="search-button-modern">
+        <span class="button-icon">🔍</span>
+        Search Properties
+    </button>
+</div>
 
             <div class="stats slide-up delay-4">
                 <div class="stat-item">
@@ -62,6 +56,8 @@
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">98<span class="stat-plus">%</span></div>
+
+                    
                     <div class="stat-label">Happy Clients</div>
                 </div>
             </div>
@@ -71,8 +67,11 @@
     <!-- Properties Section -->
     <section class="section" id="properties">
         <div class="section-header">
-            <h2 class="section-title slide-up">Exceptional Properties</h2>
-            <a href="#" class="view-all slide-up delay-1">View All Properties →</a>
+            <div>
+                <p class="page-label">Featured listing</p>
+                <h2 class="section-title slide-up">Exceptional Properties</h2>
+            </div>
+            <a href="properties.html" class="view-all slide-up delay-1">View All Properties →</a>
         </div>
         
         <div class="properties-grid">
@@ -82,7 +81,7 @@
                     <span class="property-badge">Featured</span>
                 </div>
                 <div class="property-content">
-                    <div class="property-price">$4,500,000</div>
+                    <div class="property-price">₱1,500,000</div>
                     <h3 class="property-title">Modern Ocean Villa</h3>
                     <div class="property-meta">
                         <span>🛏️ 4 beds</span>
@@ -98,7 +97,7 @@
                     <span class="property-badge">Featured</span>
                 </div>
                 <div class="property-content">
-                    <div class="property-price">$4,500,000</div>
+                    <div class="property-price">₱3,500,000</div>
                     <h3 class="property-title">Luxurious Penthouse</h3>
                     <div class="property-meta">
                         <span>🛏️ 3 beds</span>
@@ -114,7 +113,7 @@
                     <span class="property-badge">Featured</span>
                 </div>
                 <div class="property-content">
-                   <div class="property-price">$4,500,000</div>
+                   <div class="property-price">₱1,000,000</div>
                     <h3 class="property-title">Contemporary Residence</h3>
                     <div class="property-meta">
                         <span>🛏️ 5 beds</span>
@@ -130,8 +129,9 @@
     <section class="journey-section">
         <div class="journey-container">
             <div class="journey-header">
+                <p class="page-label">why design spaces</p>
                 <h2 class="journey-title slide-up">Your Journey Starts Here</h2>
-                <p class="journey-subtitle slide-up delay-1">A seamless process from search to settlement</p>
+                <p class="journey-subtitle slide-up delay-1">We combine local expertise with global reach to deliver exceptional real estate services tailored to your needs.</p>
             </div>
 
             <div class="steps-grid">
@@ -166,6 +166,7 @@
     <section class="testimonials-section">
         <div class="testimonials-container">
             <div class="journey-header">
+                <p class="page-label">testimonials</p>
                 <h2 class="journey-title slide-up">What Our Clients Say</h2>
                 <p class="journey-subtitle slide-up delay-1">Trusted by thousands of satisfied homeowners and investors</p>
             </div>
@@ -201,8 +202,12 @@
             <h2 class="cta-title slide-up">Ready to Find Your Perfect Home?</h2>
             <p class="cta-description slide-up delay-1">Let our experienced team guide you through the journey of finding and securing your dream property with expert advice every step of the way</p>
             <div class="cta-buttons slide-up delay-2">
-                <button class="btn-primary">Get Started</button>
+                <a href="properties.html">
+                <button class="get-started-btn">Get Started</button>
+                </a>
+                <a href="about.html">
                 <button class="btn-secondary">Learn More</button>
+                </a>
             </div>
         </div>
     </section>
@@ -215,20 +220,21 @@
                     <h3>Design<span>Spaces</span></h3>
                     <p class="footer-description">Your trusted partner in finding the perfect property. We connect dreams with reality through exceptional service and expertise.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link">f</a>
-                        <a href="#" class="social-link">t</a>
-                        <a href="#" class="social-link">in</a>
-                        <a href="#" class="social-link">ig</a>
+                        <a href="https://www.facebook.com/HervyTanamal" target="_blank" rel="norefferer" class="social-link">f</a>
+                        <a href="#" target="_blank" rel="norefferer" class="social-link">t</a>
+                        <a href="https://www.linkedin.com/in/bjorn-tanamal/" target="_blank" rel="norefferer"  class="social-link">in</a>
+                        <a href="https://www.instagram.com/beejoorn.dev_web/" target="_blank" rel="norefferer" class="social-link">ig</a>
                     </div>
                 </div>
 
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Properties</a></li>
-                        <li><a href="#">Services</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -246,14 +252,20 @@
                     <h4>Contact Us</h4>
                     <ul class="footer-links">
                         <li><a href="#">📧 hello@designspaces.com</a></li>
-                        <li><a href="#">📞 +1 (555) 123-4567</a></li>
-                        <li><a href="#">📍 123 Main St, City, State</a></li>
+                        <li><a href="#">📞 +63 954-562-7890</a></li>
+                         <li><a href="#">📍 Valencia City Bukidnon, PH</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2025 DesignSpaces. All rights reserved. | Privacy Policy | Terms of Service</p>
+             <div class="footer-bottom">
+                <p>&copy; 2025 DesignSpaces. All rights reserved.</p>
+                <P>Designed & Developed by Bjorn Tanamal</P>
+                <div class="footer-privacy-terms">
+                <p> Privacy Policy</p>
+                <span> | </span>
+                <p>Terms of Service</p>
+                </div>
             </div>
         </div>
     </footer>

@@ -1645,6 +1645,7 @@
             align-items: center;
             gap: .5rem;  
             flex-direction: row; 
+            cursor: pointer;
        }
 
        .footer-privacy-terms p {

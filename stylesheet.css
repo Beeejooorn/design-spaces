@@ -1509,7 +1509,7 @@
         }
 
         .map-container {
-            max-width: 1400px;
+            /* max-width: 1400px; */
             margin: 0 auto;
             text-align: center;
             background: #F5F5F5;

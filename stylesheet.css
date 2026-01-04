@@ -253,6 +253,10 @@
             transform: translateX(0);
         }
 
+        .button-home {
+            text-decoration: none;
+        }
+
 /* Responsive */
 @media (max-width: 768px) {
     .search-container {
@@ -866,6 +870,23 @@
             gap: 0.3rem;
         }
 
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #6B6B6B;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        .no-results p {
+            margin: 0;
+        }
+
+        /* Hidden property card */
+        .property-card.hidden {
+            display: none;
+        }
 /* ===================== PROPERTIES Page ====================== */ 
 
 

@@ -22,7 +22,7 @@
             <li><a href="properties.html">Properties</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="contact.html">Contact</a></li>
-             <li><a href="contact.html"><button class="btn-primary">Get Started</button></a></li>
+             <li><a href="contact.html"><button class="btn-primary">Get Started</button></a></li>   
         </ul>
     </nav>
 
@@ -38,9 +38,9 @@
         <div class="properties-search-container scale-in delay-4">
             <div class="properties-search-box">
                 <span>🔍</span>
-                <input type="text" placeholder="Search by location or property name">
+                <input type="text" id="searchInput" placeholder="Search by location or property name">
             </div>
-            <button class="filter-button">
+            <button class="filter-button" id="filterBtn">
                 <span>☰</span>
                 Filters
             </button>
@@ -49,21 +49,24 @@
         <div id="filterDropdown" class="filter-panel" style="display: none;">
             <p class="filter-label">Property Type</p>
             <div class="filter-tags">
-                <button class="filter-tag active" onclick="filterProperties('all')">All</button>
-                <button class="filter-tag" onclick="filterProperties('villa')">Villa</button>
-                <button class="filter-tag" onclick="filterProperties('penthouse')">Penthouse</button>
-                <button class="filter-tag" onclick="filterProperties('estate')">Estate</button>
-                <button class="filter-tag" onclick="filterProperties('loft')">Loft</button>
+                <button class="filter-tag active" data-filter="all">All</button>
+                <button class="filter-tag" data-filter="villa">Villa</button>
+                <button class="filter-tag" data-filter="penthouse">Penthouse</button>
+                <button class="filter-tag" data-filter="estate">Estate</button>
+                <button class="filter-tag" data-filter="loft">Loft</button>
             </div>
         </div>
 
-        <p class="results-count slide-up delay-5">Showing 6 properties</p>
+        <p class="results-count slide-up delay-5" id="resultsCount">Showing 6 properties</p>
+        <div class="no-results" id="noResults" style="display: none;">
+            <p>😕 No properties found matching your search.</p>
+        </div>
 
         <div class="properties-grid">
             <!-- Property Card 1 -->
-            <div class="property-card scale-in delay-2" data-category="villa">
+            <div class="property-card scale-in delay-2" data-category="villa" data-name="Modern Luxury Villa" data-location="Cebu City, Cebu, PH">
                 <div class="property-image-container">
-                    <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop" alt="Property" class="property-image" >
+                    <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop" alt="Property" class="property-image">
                     <span class="property-badge">Featured</span>
                 </div>
                 <div class="property-content">
@@ -79,7 +82,7 @@
             </div>
 
             <!-- Property Card 2 -->
-            <div class="property-card scale-in delay-3" data-category="estate">
+            <div class="property-card scale-in delay-3" data-category="estate" data-name="Oceanfront Paradise" data-location="Siargao Island, Surigao del Norte, PH">
                 <div class="property-image-container">
                     <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop" alt="Property" class="property-image">
                     <span class="property-badge new">New</span>
@@ -97,7 +100,7 @@
             </div>
 
             <!-- Property Card 3 -->
-            <div class="property-card scale-in delay-4" data-category="penthouse">
+            <div class="property-card scale-in delay-4" data-category="penthouse" data-name="Skyline Penthouse" data-location="Baguio City, Benguet, PH">
                 <div class="property-image-container">
                     <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop" alt="Property" class="property-image">
                     <span class="property-badge hot">Hot</span>
@@ -115,7 +118,7 @@
             </div>
 
             <!-- Property Card 4 -->
-            <div class="property-card scale-in delay-5" data-category="estate">
+            <div class="property-card scale-in delay-5" data-category="estate" data-name="Contemporary Estate" data-location="Cebu City, Cebu, PH">
                 <div class="property-image-container">
                     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="Property" class="property-image">
                     <span class="property-badge">Featured</span>
@@ -126,14 +129,14 @@
                     <p class="property-location">📍 Cebu City, Cebu, PH</p>
                     <div class="property-meta">
                         <span>🛏️ 6</span>
-                        <span>🛁  8</span>
+                        <span>🛁 8</span>
                         <span>📐 12,160 sqft</span>
                     </div>
                 </div>
             </div>
 
             <!-- Property Card 5 -->
-            <div class="property-card scale-in delay-6" data-category="estate">
+            <div class="property-card scale-in delay-6" data-category="estate" data-name="Coastal Retreat" data-location="El Nido, Palawan, PH">
                 <div class="property-image-container">
                     <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop" alt="Property" class="property-image">
                     <span class="property-badge new">New</span>
@@ -144,14 +147,14 @@
                     <p class="property-location">📍 El Nido, Palawan, PH</p>
                     <div class="property-meta">
                         <span>🛏️ 4</span>
-                        <span>🛁  4</span>
+                        <span>🛁 4</span>
                         <span>📐 5,335 sqft</span>
                     </div>
                 </div>
             </div>
 
             <!-- Property Card 6 -->
-            <div class="property-card scale-in delay-2" data-category="loft">
+            <div class="property-card scale-in delay-2" data-category="loft" data-name="Urban Loft" data-location="Makati City, Metro Manila, PH">
                 <div class="property-image-container">
                     <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop" alt="Property" class="property-image">
                     <span class="property-badge hot">Hot</span>
@@ -162,7 +165,7 @@
                     <p class="property-location">📍 Makati City, Metro Manila, PH</p>
                     <div class="property-meta">
                         <span>🛏️ 2</span>
-                        <span>🛁  2</span>
+                        <span>🛁 2</span>
                         <span>📐 2,400 sqft</span>
                     </div>
                 </div>

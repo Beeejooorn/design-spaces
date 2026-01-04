@@ -1,4 +1,4 @@
-// Mobile menu toggle
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
@@ -27,15 +27,19 @@
             });
         });
 
-        
-        const filterBtn = document.querySelector('.filter-button'); // Your button
-        const filterDropdown = document.getElementById('filterDropdown'); // The drawer
-        const cards = document.querySelectorAll('.property-card'); // All houses
-        const countLabel = document.querySelector('.results-count'); // "Showing 6 properties"
+        // Properties Search & Filter Functionality
+        const searchInput = document.getElementById('searchInput');
+        const filterBtn = document.getElementById('filterBtn');
+        const filterDropdown = document.getElementById('filterDropdown');
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const propertyCards = document.querySelectorAll('.property-card');
+        const resultsCount = document.getElementById('resultsCount');
+        const noResults = document.getElementById('noResults');
 
-        // TOGGLE DROPDOWN FUNCTION
+        let currentFilter = 'all';
+
+        // Toggle filter dropdown
         filterBtn.addEventListener('click', () => {
-            // If hidden, show it. If shown, hide it.
             if (filterDropdown.style.display === 'none' || filterDropdown.style.display === '') {
                 filterDropdown.style.display = 'block';
             } else {
@@ -43,33 +47,72 @@
             }
         });
 
-        // FILTER FUNCTION
-        function filterProperties(category) {
+        // Real-time search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            filterAndSearch(searchTerm, currentFilter);
+        });
+
+        // Filter tag click handlers
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                // Remove active class from all tags
+                filterTags.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tag
+                this.classList.add('active');
+                
+                // Get filter value
+                currentFilter = this.getAttribute('data-filter');
+                
+                // Get current search term
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                // Apply filter and search
+                filterAndSearch(searchTerm, currentFilter);
+            });
+        });
+
+        // Main filter and search function
+        function filterAndSearch(searchTerm, filterType) {
             let visibleCount = 0;
 
-            // Update the buttons to show which is active
-            const buttons = document.querySelectorAll('.filter-tag');
-            buttons.forEach(btn => {
-                // Simple logic: If button text matches category, make it orange
-                if (btn.textContent.toLowerCase() === category || (category === 'all' && btn.textContent === 'All')) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
+            propertyCards.forEach(card => {
+                const propertyName = card.getAttribute('data-name').toLowerCase();
+                const propertyType = card.getAttribute('data-category').toLowerCase();
+                const propertyLocation = card.getAttribute('data-location').toLowerCase();
 
-            // Loop through all cards to show/hide them
-            cards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
+                // Check if property matches search term
+                const matchesSearch = searchTerm === '' || 
+                                    propertyName.includes(searchTerm) || 
+                                    propertyType.includes(searchTerm) ||
+                                    propertyLocation.includes(searchTerm);
 
-                if (category === 'all' || cardCategory === category) {
-                    card.style.display = 'block'; // Show it
+                // Check if property matches filter type
+                const matchesFilter = filterType === 'all' || propertyType === filterType;
+
+                // Show/hide card based on both search and filter
+                if (matchesSearch && matchesFilter) {
+                    card.classList.remove('hidden');
+                    card.style.display = 'block';
                     visibleCount++;
                 } else {
-                    card.style.display = 'none'; // Hide it
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
                 }
             });
 
-            // Update the "Showing X properties" text
-            countLabel.textContent = `Showing ${visibleCount} properties`;
+            // Update results count and no results message
+            updateResults(visibleCount);
+        }
+
+        // Update results display
+        function updateResults(count) {
+            if (count === 0) {
+                resultsCount.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                resultsCount.style.display = 'block';
+                noResults.style.display = 'none';
+                resultsCount.textContent = `Showing ${count} ${count === 1 ? 'property' : 'properties'}`;
+            }
         }
